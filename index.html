@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS - Premium Pomodoro Timer</title>
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-bg-glow"></div>
+  
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <i data-lucide="compass" class="logo-icon"></i>
+        <span>PS</span>
+      </div>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+        <i data-lucide="sun"></i>
+      </button>
+    </header>
+
+    <main class="timer-section">
+      <!-- Mode Tabs -->
+      <nav class="mode-tabs" aria-label="Timer Modes">
+        <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+        <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+        <button class="mode-btn" data-mode="longBreak">Long Break</button>
+      </nav>
+
+      <!-- Visual Circle & Clock -->
+      <div class="timer-visual-wrapper">
+        <div class="circular-progress-container">
+          <svg class="progress-ring" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="gradient-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-primary)" />
+                <stop offset="100%" stop-color="var(--accent-secondary)" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-ring-bg" cx="100" cy="100" r="88" />
+            <circle class="progress-ring-fill" id="timer-progress" cx="100" cy="100" r="88" />
+          </svg>
+          
+          <div class="timer-content">
+            <span class="timer-status" id="timer-status-text">Focus Time</span>
+            <h1 class="timer-display" id="time-display">25:00</h1>
+            <span class="timer-next-mode" id="next-up-text">Next: Short Break</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Buttons -->
+      <div class="controls-container">
+        <button id="settings-btn" class="control-btn-secondary" aria-label="Settings">
+          <i data-lucide="sliders"></i>
+        </button>
+        
+        <button id="play-pause-btn" class="control-btn-primary" aria-label="Start Timer">
+          <i data-lucide="play" id="play-icon"></i>
+        </button>
+        
+        <button id="reset-btn" class="control-btn-secondary" aria-label="Reset Timer">
+          <i data-lucide="rotate-ccw"></i>
+        </button>
+      </div>
+    </main>
+
+    <!-- Stats and Dashboard -->
+    <footer class="dashboard-footer">
+      <div class="stats-glass-card">
+        <div class="stat-item">
+          <span class="stat-label">Sessions Completed</span>
+          <span class="stat-value" id="stats-sessions">0</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Focus Time</span>
+          <span class="stat-value" id="stats-time">0m</span>
+        </div>
+      </div>
+      <div class="keyboard-hint">
+        Press <kbd>Space</kbd> to Start/Pause &bull; <kbd>Esc</kbd> to Reset
+      </div>
+    </footer>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal" aria-hidden="true">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2>Timer Settings</h2>
+        <button id="close-settings-btn" class="icon-btn" aria-label="Close Settings">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="settings-group">
+          <h3>Durations (minutes)</h3>
+          <div class="settings-inputs-grid">
+            <div class="input-field">
+              <label for="input-pomodoro">Pomodoro</label>
+              <input type="number" id="input-pomodoro" min="0.1" max="60" step="0.1" value="25">
+            </div>
+            <div class="input-field">
+              <label for="input-short">Short Break</label>
+              <input type="number" id="input-short" min="0.1" max="30" step="0.1" value="5">
+            </div>
+            <div class="input-field">
+              <label for="input-long">Long Break</label>
+              <input type="number" id="input-long" min="0.1" max="60" step="0.1" value="15">
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Preferences</h3>
+          <div class="toggle-setting">
+            <div class="toggle-info">
+              <span class="setting-title">Audible Timer Ticking</span>
+              <span class="setting-desc">Soft ticking noise when timer runs</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="input-ticking">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-setting">
+            <div class="toggle-info">
+              <span class="setting-title">Volume Control</span>
+              <span class="setting-desc">Adjust audio alerts and ticking sound</span>
+            </div>
+            <div class="volume-slider-container">
+              <i data-lucide="volume-1"></i>
+              <input type="range" id="input-volume" min="0" max="100" value="50" class="volume-range">
+              <i data-lucide="volume-2"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="clear-stats-btn" class="btn-text" style="color: var(--accent-primary); margin-right: auto;">Clear Stats</button>
+        <button id="reset-defaults-btn" class="btn-text">Reset Defaults</button>
+        <button id="save-settings-btn" class="btn-filled">Apply Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Confirmation Modal -->
+  <div class="modal-overlay" id="confirm-modal" aria-hidden="true">
+    <div class="modal-content glass-card confirm-modal-content">
+      <div class="confirm-icon-container">
+        <i data-lucide="alert-triangle" class="warning-icon"></i>
+      </div>
+      <h2>Reset Statistics?</h2>
+      <p class="confirm-message">This will permanently clear all your completed focus sessions and recorded focus time. This action cannot be undone.</p>
+      <div class="confirm-buttons">
+        <button id="cancel-clear-btn" class="btn-text">Keep Stats</button>
+        <button id="confirm-clear-btn" class="btn-filled btn-danger">Yes, Clear Stats</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

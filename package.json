@@ -1,0 +1,16 @@
+{
+  "name": "aura-pomodoro",
+  "version": "1.0.0",
+  "description": "A premium, glassmorphic web-based Pomodoro timer.",
+  "scripts": {
+    "dev": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "productivity",
+    "glassmorphism"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
