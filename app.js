@@ -61,20 +61,24 @@ function initElements() {
   bodyEl = document.body;
   timeDisplayEl = document.getElementById('time-display');
   statusTextEl = document.getElementById('timer-status-text');
+
   nextUpTextEl = document.getElementById('next-up-text');
   playPauseBtn = document.getElementById('play-pause-btn');
   playIconEl = document.getElementById('play-icon');
+
   resetBtn = document.getElementById('reset-btn');
   settingsBtn = document.getElementById('settings-btn');
   themeToggleBtn = document.getElementById('theme-toggle');
 
   settingsModal = document.getElementById('settings-modal');
   closeSettingsBtn = document.getElementById('close-settings-btn');
+
   saveSettingsBtn = document.getElementById('save-settings-btn');
   resetDefaultsBtn = document.getElementById('reset-defaults-btn');
   inputPomodoro = document.getElementById('input-pomodoro');
   inputShort = document.getElementById('input-short');
   inputLong = document.getElementById('input-long');
+
   inputTicking = document.getElementById('input-ticking');
   inputVolume = document.getElementById('input-volume');
 
@@ -235,6 +239,7 @@ function playTick() {
 
 // Timer Logic
 function setMode(mode) {
+
   // Update mode classes on body to change visual gradients
   bodyEl.classList.remove('mode-pomodoro', 'mode-shortBreak', 'mode-longBreak');
   bodyEl.classList.add(`mode-${mode}`);
@@ -309,7 +314,8 @@ function startTimer() {
         handleTimerEnd();
       }
     }
-  }, 100); // Poll frequently to prevent lag / out-of-sync seconds
+  }, 100);
+  // Poll frequently to prevent lag / out-of-sync seconds
 }
 
 function pauseTimer() {
