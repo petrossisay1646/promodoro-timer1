@@ -4,7 +4,7 @@ A modern, beautifully designed Pomodoro Timer web app built with pure HTML, CSS,
 
 🚀 Live Demo
 
-🔗 View Website: [(https://promodoro-timer1-1rshxpwz4-petros-sisay.vercel.app/)](https://promodoro-timer1-1rshxpwz4-petros-sisay.vercel.app/)
+🔗 View Website: [(https://promodoro-timer1-1rshxpwz4-petros-sisay.vercel.app/)](https://promodoro-timer1-1rshxpwz4-petros-sisay.vercel.app)
 ---
 
 ## ✨ Features
@@ -28,7 +28,6 @@ A modern, beautifully designed Pomodoro Timer web app built with pure HTML, CSS,
 | CSS3 | Glassmorphism styling, animations, responsive layout |
 | Vanilla JavaScript | Timer logic, state management, DOM manipulation |
 
-No frameworks. No dependencies. Just the web platform.
 
 ---
 

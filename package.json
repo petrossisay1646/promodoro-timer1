@@ -1,7 +1,7 @@
 {
   "name": "aura-pomodoro",
   "version": "1.0.0",
-  "description": "A premium, glassmorphic web-based Pomodoro timer.",
+  "description": "A productive, glassmorphic web-based Pomodoro timer.",
   "scripts": {
     "dev": "npx http-server -p 3000"
   },
