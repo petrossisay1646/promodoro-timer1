@@ -28,7 +28,6 @@ A modern, beautifully designed Pomodoro Timer web app built with pure HTML, CSS,
 | CSS3 | Glassmorphism styling, animations, responsive layout |
 | Vanilla JavaScript | Timer logic, state management, DOM manipulation |
 
-
 ---
 
 ## 🚀 Getting Started
@@ -73,8 +72,6 @@ pomodoro-timer/
 └── README.md       # You are here
 ```
 
----
-
 ## 🎯 How to Use
 
 1. **Start the Timer** — Click the **Start** button to begin your 25-minute focus session.
@@ -105,8 +102,6 @@ When the timer reaches zero:
 - An audio chime plays in the browser
 - The tab title updates to alert you
 - The timer automatically stops (or advances to the next phase)
-
-> **Note:** Browser audio requires a user interaction before it can play. Click Start at least once before expecting audio to work.
 
 ---
 
