@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PS - Premium Pomodoro Timer</title>
+  <title>PS - Pomodoro Timer</title>
   <!-- Google Fonts for modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+ 
   <!-- Lucide Icons via CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
@@ -27,6 +28,7 @@
     </header>
 
     <main class="timer-section">
+    
       <!-- Mode Tabs -->
       <nav class="mode-tabs" aria-label="Timer Modes">
         <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
@@ -75,12 +77,14 @@
     <!-- Stats and Dashboard -->
     <footer class="dashboard-footer">
       <div class="stats-glass-card">
+       
         <div class="stat-item">
           <span class="stat-label">Sessions Completed</span>
           <span class="stat-value" id="stats-sessions">0</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
+         
           <span class="stat-label">Focus Time</span>
           <span class="stat-value" id="stats-time">0m</span>
         </div>
@@ -162,7 +166,7 @@
         <i data-lucide="alert-triangle" class="warning-icon"></i>
       </div>
       <h2>Reset Statistics?</h2>
-      <p class="confirm-message">This will permanently clear all your completed focus sessions and recorded focus time. This action cannot be undone.</p>
+      <p class="confirm-message">This will permanently clear all your completed focus <b>sessions</b> and recorded focus time. This action cannot be undone.</p>
       <div class="confirm-buttons">
         <button id="cancel-clear-btn" class="btn-text">Keep Stats</button>
         <button id="confirm-clear-btn" class="btn-filled btn-danger">Yes, Clear Stats</button>
